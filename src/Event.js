@@ -1,6 +1,5 @@
 import React from 'react';
-import './Event.css';
-
+import './App.css';
 class Event extends React.Component {
     state = {
         active: false

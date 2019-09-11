@@ -5,8 +5,7 @@ import _ from 'lodash';
 import profile from './profile.jpg'
 
 
-let message = 'Hello'
-
+let message = 'Hello'//toUpperCase()
 const prepareStateFromWord = (given_word) => {
   let word = given_word.toUpperCase()
   let chars = _.shuffle(Array.from(word))
@@ -18,8 +17,8 @@ const prepareStateFromWord = (given_word) => {
     completed: false,
     check: 0
   }
-
 }
+
 class App extends React.Component {
   state = prepareStateFromWord(message);
   click = (value) => {
@@ -33,18 +32,40 @@ class App extends React.Component {
       }
     }
   }
+  show_name = () => {
+    this.setState({
+      show : !this.state.show
+    })
+    console.log(this.state.show) // check
+  }
+
   reset = () => {
     this.setState({ check: this.state.check + 1, completed: false })
   }
   render() {
     let check = this.state.completed === false ? '' : <button className="button" onClick={this.reset}><h1>Play Again</h1></button>;
+    let ans = this.state.completed === false ? '' : <h3 className="ans">This word is {message}</h3>;
     let checks = this.state.completed === false ? '' : <h1 className="win">You Win</h1>;
     let count_end = this.state.counter > 5 ? "Game Over" : "Counter : " + this.state.counter;
     return (
       <div className="first">
         <div className="second">
           <div className="profile-area"><img className="profile" src={profile}></img></div>
-          <div><h1 className="text">LAB:3SA03 > 6035512059</h1></div>
+          <div className="center-box">
+            <div className="center-text">
+              <div className="text1"><h1 className="text">LAB:3SA03 ? 6035512059</h1></div>
+              <div className="click">
+                <div className="button-a">
+                  <button className="button-show" onClick={this.show_name}>{this.state.show===false ? 'Show' : 'Hide'}</button>
+                </div>
+                <div className="box-myname">
+                  <div></div>
+                  <h3 className="text">{this.state.show === true ? 'Arim Cheberahim' : '...'}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div>
             {
               Array.from(this.state.chars).map((x, y) => (
@@ -61,10 +82,10 @@ class App extends React.Component {
               <h1 className="text">Choose</h1>
               <h1 className="text">You can play 5 Round</h1>
               {
-                Array.from(this.state.guess).map((item, index) => (
+                Array.from(this.state.guess).map((x, y) => (
                   <Event
-                    value={item}
-                    key={index}
+                    value={x}
+                    key={y}
                     click={this.click}
                   />
                 ))
@@ -74,6 +95,7 @@ class App extends React.Component {
               </div>
               <div className="button-area">
                 {check}
+                {ans}
                 {checks}
               </div>
             </div>
