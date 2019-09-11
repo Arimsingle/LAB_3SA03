@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Check from './Check';
 class Event extends React.Component {
     state = {
         active: false
@@ -8,7 +9,12 @@ class Event extends React.Component {
         this.setState({
             active: true
         });
-        if (this.state.active === false)
+        if(this.props.number > 5){
+            this.setState({
+                active: true
+            });
+        }
+        else if (this.state.active === false)
             this.props.click(this.props.value);
 
     }
@@ -17,13 +23,16 @@ class Event extends React.Component {
             this.setState({ active: false })
             console.log('...');
         }
+
     }
     render() {
         let activeClass = this.state.active ? 'activeCard' : '';
         let className = `card ${activeClass}`
+
         return (
             <div className={className} onClick={this.activate}>
                 <h1>{this.props.value}</h1>
+            
             </div>
         )
     }

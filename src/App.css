@@ -10,6 +10,7 @@ body{
   height: 30.7cm; 
   margin-bottom: 0.5cm;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  
 }
 .profile{
   width: 150px;
@@ -17,7 +18,7 @@ body{
   margin: 16px 32px;
   border-radius: 100%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  
+  border-bottom:3px solid #273746;
   
 }
 .profile-area{
@@ -83,6 +84,7 @@ body{
   background: #808B96; 
   border-radius: 12px;
   text-shadow:0 4px 8px 0 rgba(0,0,0,0.2);
+  border-bottom:3px solid #273746;
 }
 .button-show:hover{
   box-shadow:2px 2px 8px #000000;
