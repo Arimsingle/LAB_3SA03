@@ -4,8 +4,7 @@ import './App.css';
 import _ from 'lodash';
 import profile from './profile.jpg'
 
-
-let message = 'Hello'//toUpperCase()
+const message = 'Hello'
 const prepareStateFromWord = (given_word) => {
   let word = given_word.toUpperCase()
   let chars = _.shuffle(Array.from(word))
@@ -20,12 +19,16 @@ const prepareStateFromWord = (given_word) => {
 }
 
 class App extends React.Component {
+  state={
+    show : false,
+    give_up : false
+  }
   state = prepareStateFromWord(message);
   click = (value) => {
     let guess = [...this.state.guess, value]
     this.setState({ guess })
     if (guess.length === this.state.chars.length) {
-      if (guess.join('').toString() === this.state.word) {
+      if (guess.join('').toString() === this.state.word){
         this.setState({ guess: [], completed: true })
       } else {
         this.setState({ guess: [], counter: this.state.counter + 1 })
@@ -42,11 +45,20 @@ class App extends React.Component {
   reset = () => {
     this.setState({ check: this.state.check + 1, completed: false })
   }
+  give_ups=()=>{
+    this.setState({
+      give_up : true
+    })
+
+
+  }
+ 
   render() {
     let check = this.state.completed === false ? '' : <button className="button" onClick={this.reset}><h1>Play Again</h1></button>;
     let ans = this.state.completed === false ? '' : <h3 className="ans">This word is {message}</h3>;
     let checks = this.state.completed === false ? '' : <h1 className="win">You Win</h1>;
     let count_end = this.state.counter > 5 ? "Game Over" : "Counter : " + this.state.counter;
+    
     return (
       <div className="first">
         <div className="second">
@@ -56,7 +68,7 @@ class App extends React.Component {
               <div className="text1"><h1 className="text">LAB:3SA03 ? 6035512059</h1></div>
               <div className="click">
                 <div className="button-a">
-                  <button className="button-show" onClick={this.show_name}>{this.state.show===false ? 'Show' : 'Hide'}</button>
+                  <button className="button-show" onClick={this.show_name}>{this.state.show===false ? 'Show my name' : 'Hide my name'}</button>
                 </div>
                 <div className="box-myname">
                   <div></div>
@@ -99,9 +111,11 @@ class App extends React.Component {
                 {checks}
               </div>
             </div>
-
           </div>
-
+          <div className="center-text">
+            <button className="button-show" onClick={this.give_ups}>Give up</button>
+            <h3>{this.state.give_up === true ? 'Ans: '+message :''}</h3>
+          </div>
         </div>
 
       </div>

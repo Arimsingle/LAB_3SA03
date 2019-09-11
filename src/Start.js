@@ -5,7 +5,6 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 
 function Start() {
-
   return (
     <div className="one">
       <div className="row">
@@ -14,9 +13,11 @@ function Start() {
       </div>
       <div className="two">
         <div className="three">
-        <ul>
-                    <li><Link to="/react">React</Link></li>
-                </ul>
+          <button onclick={<Link to="/App">About</Link>}>O</button>
+          <Router>
+            <Route path="/App" component={App} />
+          </Router>
+
         </div>
 
       </div>
