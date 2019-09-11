@@ -1,10 +1,11 @@
 import React from 'react';
 import Event from './Event';
+import Check from './Check';
 import './App.css';
 import _ from 'lodash';
 import profile from './profile.jpg'
 
-const message = 'Hello'
+const message = 'Apple'
 const prepareStateFromWord = (given_word) => {
   let word = given_word.toUpperCase()
   let chars = _.shuffle(Array.from(word))
@@ -57,7 +58,7 @@ class App extends React.Component {
     let check = this.state.completed === false ? '' : <button className="button" onClick={this.reset}><h1>Play Again</h1></button>;
     let ans = this.state.completed === false ? '' : <h3 className="ans">This word is {message}</h3>;
     let checks = this.state.completed === false ? '' : <h1 className="win">You Win</h1>;
-    let count_end = this.state.counter > 5 ? "Game Over" : "Counter : " + this.state.counter;
+    //let count_end = this.state.counter > 5 ? "Game Over" : "Counter : " + this.state.counter;
     
     return (
       <div className="first">
@@ -103,7 +104,8 @@ class App extends React.Component {
                 ))
               }
               <div>
-                <h1 className="text">{count_end}</h1>
+                {/* <h1 className="text">{this.count_end}</h1> */}
+                <Check check_count={this.state.counter}/>
               </div>
               <div className="button-area">
                 {check}
@@ -113,8 +115,8 @@ class App extends React.Component {
             </div>
           </div>
           <div className="center-text">
-            <button className="button-show" onClick={this.give_ups}>Give up</button>
-            <h3>{this.state.give_up === true ? 'Ans: '+message :''}</h3>
+            <button className="button-show" onClick={this.give_ups}>Hint</button>
+            <h3>{this.state.give_up === true ? 'Ans:Fruit' :''}</h3>
           </div>
         </div>
 
