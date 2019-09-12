@@ -2,6 +2,7 @@ import React from 'react';
 import Event from './Event';
 import Check from './Check';
 import './App.css';
+import Start from './Start'
 import _ from 'lodash';
 import profile from './profile.jpg'
 
@@ -61,6 +62,10 @@ class App extends React.Component {
     //let count_end = this.state.counter > 5 ? "Game Over" : "Counter : " + this.state.counter;
     
     return (
+      <div>
+      <div>
+        <Start />
+      </div>
       <div className="first">
         <div className="second">
           <div className="profile-area"><img className="profile" src={profile}></img></div>
@@ -120,6 +125,7 @@ class App extends React.Component {
           </div>
         </div>
 
+      </div>
       </div>
     )
   }
