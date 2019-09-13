@@ -49,7 +49,7 @@ class App extends React.Component {
   }
   give_ups=()=>{
     this.setState({
-      give_up : true
+      give_up : !this.state.give_up
     })
 
 
