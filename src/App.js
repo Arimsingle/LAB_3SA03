@@ -121,7 +121,6 @@ class App extends React.Component {
               <h3>{this.state.give_up === true ? 'Ans:Fruit' : ''}</h3>
             </div>
           </div>
-
         </div>
       </div>
     )
