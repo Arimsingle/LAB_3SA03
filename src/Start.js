@@ -12,8 +12,6 @@ function Start() {
         <div><h1 className="color">(js)</h1></div>
       </div>
     </div>
-
-
   );
 }
 export default Start;
